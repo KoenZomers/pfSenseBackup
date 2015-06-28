@@ -28,8 +28,8 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
             var authenticationResult = HttpUtility.AuthenticateViaUrlEncodedFormMethod(string.Concat(pfSenseServer.ServerBaseUrl, "index.php"),
                                                                                        new Dictionary<string, string>
                                                                                        {
-                                                                                            { "usernamefld", pfSenseServer.Username }, 
-                                                                                            { "passwordfld", pfSenseServer.Password }, 
+                                                                                            { "usernamefld", System.Web.HttpUtility.UrlEncode(pfSenseServer.Username) }, 
+                                                                                            { "passwordfld", System.Web.HttpUtility.UrlEncode(pfSenseServer.Password) }, 
                                                                                             { "login", "Login" }
                                                                                        },
                                                                                        cookieJar);

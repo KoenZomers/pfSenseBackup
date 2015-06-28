@@ -39,14 +39,14 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
             {
                 xssToken = Regex.Match(loginPageContents, "var.*?csrfMagicToken.*?=.*?\"(?<xsstoken>.*?)\"");
             }
-
+            
             // Authenticate the session
             var authenticationResult = HttpUtility.AuthenticateViaUrlEncodedFormMethod(string.Concat(pfSenseServer.ServerBaseUrl, "index.php"),
                                                                                        new Dictionary<string, string>
                                                                                        {
                                                                                             {"__csrf_magic", xssToken.Groups["xsstoken"].Value },
-                                                                                            { "usernamefld", pfSenseServer.Username }, 
-                                                                                            { "passwordfld", pfSenseServer.Password }, 
+                                                                                            { "usernamefld", System.Web.HttpUtility.UrlEncode(pfSenseServer.Username) }, 
+                                                                                            { "passwordfld", System.Web.HttpUtility.UrlEncode(pfSenseServer.Password) }, 
                                                                                             { "login", "Login" }
                                                                                        },
                                                                                        cookieJar);
