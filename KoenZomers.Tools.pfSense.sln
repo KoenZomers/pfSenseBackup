@@ -12,7 +12,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{E36EC09D-98CC-49D4-8B81-B05205F95306}"
 	ProjectSection(SolutionItems) = preProject
+		Releases\pfSenseBackupv1.0.zip = Releases\pfSenseBackupv1.0.zip
+		Releases\pfSenseBackupv1.1.zip = Releases\pfSenseBackupv1.1.zip
+		Releases\pfSenseBackupv1.2.zip = Releases\pfSenseBackupv1.2.zip
+		Releases\pfSenseBackupv1.3.zip = Releases\pfSenseBackupv1.3.zip
+		Releases\pfSenseBackupv1.4.zip = Releases\pfSenseBackupv1.4.zip
+		Releases\pfSenseBackupv1.5.zip = Releases\pfSenseBackupv1.5.zip
+		Releases\pfSenseBackupv1.6.zip = Releases\pfSenseBackupv1.6.zip
+		Releases\pfSenseBackupv1.7.zip = Releases\pfSenseBackupv1.7.zip
+		Releases\pfSenseBackupv1.8.zip = Releases\pfSenseBackupv1.8.zip
+		Releases\pfSenseBackupv1.9.zip = Releases\pfSenseBackupv1.9.zip
+		Releases\pfSenseBackupv2.0.zip = Releases\pfSenseBackupv2.0.zip
 		Releases\pfSenseBackupv2.1.zip = Releases\pfSenseBackupv2.1.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{12C92BB7-7D1A-49F5-AD96-2101FEE61C8E}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		VersionHistory.md = VersionHistory.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5D858129-BB53-446B-B8B8-C83D383F7F1C}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Images\Help.png = Documentation\Images\Help.png
+		Documentation\Images\SampleExecution.png = Documentation\Images\SampleExecution.png
 	EndProjectSection
 EndProject
 Global
@@ -28,5 +51,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D858129-BB53-446B-B8B8-C83D383F7F1C} = {12C92BB7-7D1A-49F5-AD96-2101FEE61C8E}
 	EndGlobalSection
 EndGlobal
