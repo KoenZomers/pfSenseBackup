@@ -63,6 +63,9 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
                 {
                     { "donotbackuprrd", pfSenseServer.BackupStatisticsData ? "" : "on" },
                     { "nopackages", pfSenseServer.BackupPackageInfo ? "" : "on" },
+                    { "encrypt", pfSenseServer.EncryptBackup ? "on" : "" },
+                    { "encrypt_password", pfSenseServer.EncryptionPassword },
+                    { "encrypt_passconf", pfSenseServer.EncryptionPassword },
                     { "Submit", "Download configuration" }
                 };
 

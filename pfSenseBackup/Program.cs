@@ -248,11 +248,17 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
                 }                
             }
 
+            if (args.Contains("-e"))
+            {
+                PfSenseServerDetails.EncryptBackup = true;
+                PfSenseServerDetails.EncryptionPassword = args[args.IndexOf("-e") + 1];
+            }
+
             PfSenseServerDetails.Version = args.Contains("-v") ? args[args.IndexOf("-v") + 1] : DefaultPfSenseVersion;
 
             PfSenseServerDetails.BackupStatisticsData = !args.Contains("-norrd");
             PfSenseServerDetails.BackupPackageInfo = !args.Contains("-nopackage");
-            PfSenseServerDetails.UseHttps = args.Contains("-usessl");            
+            PfSenseServerDetails.UseHttps = args.Contains("-usessl");
         }
 
         /// <summary>
@@ -268,6 +274,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("s: IP address or DNS name of the pfSense server");
             WriteOutput("v: PFSense version. Supported are 1.2, 2.0, 2.1 and 2.2 (2.2 = default, optional)");
             WriteOutput("o: Folder or complete path where to store the backup file (optional)");
+            WriteOutput("e: Have pfSense encrypt the backup using this password (optional)");
             WriteOutput("usessl: if provided https will be used to connect to pfSense instead of http");
             WriteOutput("norrd: if provided no RRD statistics data will be included");
             WriteOutput("nopackage: if provided no package info data will be included");
@@ -280,6 +287,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("   pfsenseBackup.exe -u admin -p mypassword -s 192.168.0.1 -o c:\\backups -norrd");
             WriteOutput("   pfsenseBackup.exe -u admin -p mypassword -s 192.168.0.1 -o c:\\backups\\pfsense.xml -norrd -nopackage");
             WriteOutput("   pfsenseBackup.exe -u admin -p mypassword -s 192.168.0.1 -o \"c:\\my backups\"");
+            WriteOutput("   pfsenseBackup.exe -u admin -p mypassword -s 192.168.0.1 -e \"mypassword\"");
             WriteOutput();
             WriteOutput("Output:");
             WriteOutput("   A timestamped file containing the backup will be created within this directory unless -o is being specified");

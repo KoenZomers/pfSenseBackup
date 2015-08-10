@@ -2,6 +2,10 @@
 
 ## Version History
 
+2.2 - released August 11, 2015 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.2.zip) - 10 kb
+
+- Added option -e to have pfSense encrypt the backup as requested by Michal Naiman
+
 2.1 - released June 28, 2015 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.1.zip) - 10 kb
 
 - Usernames and passwords sent to pfSense will now first be UrlEncoded. This allows usernames and passwords to be used with special characters like the + sign. Thanks to Marc Mittelman for pointing out this issue!

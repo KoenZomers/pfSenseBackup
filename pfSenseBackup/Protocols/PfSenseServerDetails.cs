@@ -49,5 +49,15 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
         /// Defines if the package information should also be backed up (True) or not (False)
         /// </summary>
         public bool BackupPackageInfo { get; set; }
+
+        /// <summary>
+        /// Defines if the backup should be encrypted by pfSense (True) or should be downloaded unencrypted (False)
+        /// </summary>
+        public bool EncryptBackup { get; set; }
+
+        /// <summary>
+        /// The password to use to encrypt the backup. Only applied if EncryptBackup is set to True.
+        /// </summary>
+        public string EncryptionPassword { get; set; }
     }
 }
