@@ -15,13 +15,14 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
         /// </summary>
         /// <param name="pfSenseServer">pfSense server details which identifies which pfSense server to connect to</param>
         /// <param name="cookieJar">Cookie container to use through the communication with pfSense</param>
+        /// <param name="timeout">Timeout in milliseconds on how long requests to pfSense may take. Default = 60000 = 60 seconds.</param>
         /// <returns>PfSenseBackupFile instance containing the retrieved backup content from pfSense</returns>
-        public PfSenseBackupFile Execute(PfSenseServerDetails pfSenseServer, CookieContainer cookieJar)
+        public PfSenseBackupFile Execute(PfSenseServerDetails pfSenseServer, CookieContainer cookieJar, int timeout = 60000)
         {
             Program.WriteOutput("Connecting using protocol version {0}", new object[] { pfSenseServer.Version });
 
             // Create a session on the pfSense webserver
-            var loginPageContents = HttpUtility.HttpGetLoginPageContents(pfSenseServer.ServerBaseUrl, cookieJar);
+            var loginPageContents = HttpUtility.HttpGetLoginPageContents(pfSenseServer.ServerBaseUrl, cookieJar, timeout);
 
             // Check if a response was returned from the login page request
             if (string.IsNullOrEmpty(loginPageContents))
@@ -49,7 +50,8 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
                                                                                             { "passwordfld", System.Web.HttpUtility.UrlEncode(pfSenseServer.Password) }, 
                                                                                             { "login", "Login" }
                                                                                        },
-                                                                                       cookieJar);
+                                                                                       cookieJar,
+                                                                                       timeout);
 
             // Verify if the username/password combination was valid by examining the server response
             if (authenticationResult.Contains("Username or Password incorrect"))
@@ -75,7 +77,8 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
                 FileContents = HttpUtility.DownloadBackupFile(string.Concat(pfSenseServer.ServerBaseUrl, "diag_backup.php"),
                                                                 downloadArgs,
                                                                 cookieJar,
-                                                                out filename),
+                                                                out filename,
+                                                                timeout),
                 FileName = filename
             };
             return pfSenseBackupFile;

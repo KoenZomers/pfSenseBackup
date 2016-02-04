@@ -26,6 +26,11 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
         }
 
         /// <summary>
+        /// Defines the timeout in milliseconds to allow for pfSense to respond before considering the connection stale and aborting
+        /// </summary>
+        public int? RequestTimeOut { get; set; }
+
+        /// <summary>
         /// Version of PfSense (1.2, 2.0, 2.1)
         /// </summary>
         public string Version { get; set; }

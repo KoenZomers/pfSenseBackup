@@ -3,13 +3,13 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## Download
 
-[Download the latest version](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.2.zip)
+[Download the latest version](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.3.zip)
 
 ## Release Notes
 
-2.2 - released August 11, 2015 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.2.zip) - 10 kb
+2.3 - released February 4, 2016 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.3.zip) - 10 kb
 
-- Added option -e to have pfSense encrypt the backup as requested by Michal Naiman
+- Added option -t to instruct pfSense to use a different request timeout for slow connections as requested by ilyahub in [Issue #1](https://github.com/KoenZomers/pfSenseBackup/issues/1)
 
 [Version History](https://github.com/KoenZomers/pfSenseBackup/blob/master/VersionHistory.md)
 

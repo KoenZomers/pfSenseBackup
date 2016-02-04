@@ -16,12 +16,14 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// </summary>
         /// <param name="url">Url to query</param>
         /// <param name="cookieContainer">Cookies which have been recorded for this session</param>
-        public static void HttpCreateSession(string url, CookieContainer cookieContainer)
+        /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
+        public static void HttpCreateSession(string url, CookieContainer cookieContainer, int timeout = 60000)
         {
             // Construct the request
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "HEAD";
             request.CookieContainer = cookieContainer;
+            request.Timeout = timeout;
 
             // Send the request to the webserver
             request.GetResponse();
@@ -32,13 +34,14 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// </summary>
         /// <param name="url">Url of the login page</param>
         /// <param name="cookieContainer">Cookies which have been recorded for this session</param>
+        /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
         /// <returns>Contents of the login page which can be used to parse i.e. anti-XSS tokens</returns>
-        public static string HttpGetLoginPageContents(string url, CookieContainer cookieContainer)
+        public static string HttpGetLoginPageContents(string url, CookieContainer cookieContainer, int timeout = 60000)
         {
             // Construct the request
             var request = (HttpWebRequest)WebRequest.Create(url);
-            //request.Method = "HEAD";
             request.CookieContainer = cookieContainer;
+            request.Timeout = timeout;
 
             // Send the request to the webserver
             var response = request.GetResponse();
@@ -61,8 +64,9 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <param name="url">Url to POST the login information to</param>
         /// <param name="formFields">Dictonary with key/value pairs containing the forms data to POST to the webserver</param>
         /// <param name="cookieContainer">Cookies which have been recorded for this session</param>
+        /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
         /// <returns>The website contents returned by the webserver after posting the data</returns>
-        public static string AuthenticateViaUrlEncodedFormMethod(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer)
+        public static string AuthenticateViaUrlEncodedFormMethod(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer, int timeout = 60000)
         {
             // Construct the POST request which performs the login
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -70,6 +74,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             request.Accept = "*/*";
             request.ServicePoint.Expect100Continue = false;
             request.CookieContainer = cookieContainer;
+            request.Timeout = timeout;
 
             // Construct POST data
             var postData = new StringBuilder();
@@ -121,8 +126,9 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <param name="formFields">Dictonary with key/value pairs containing the forms data to POST to the webserver</param>
         /// <param name="cookieContainer">Cookies which have been recorded for this session</param>
         /// <param name="filename">Filename of the download as provided by pfSense (out parameter)</param>
+        /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
         /// <returns>The website contents returned by the webserver after posting the data</returns>
-        public static string DownloadBackupFile(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename)
+        public static string DownloadBackupFile(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename, int timeout = 60000)
         {
             filename = null;
 
@@ -135,6 +141,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             request.Accept = "*/*";
             request.ServicePoint.Expect100Continue = false;
             request.CookieContainer = cookieContainer;
+            request.Timeout = timeout;
 
             // Construct POST data
             var postData = new StringBuilder();
@@ -202,8 +209,9 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <param name="formFields">Dictonary with key/value pairs containing the forms data to POST to the webserver</param>
         /// <param name="cookieContainer">Cookies which have been recorded for this session</param>
         /// <param name="filename">Filename of the download as provided by pfSense (out parameter)</param>
+        /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
         /// <returns>The website contents returned by the webserver after posting the data</returns>
-        public static string DownloadBackupFile(string url, string userName, string userPassword, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename)
+        public static string DownloadBackupFile(string url, string userName, string userPassword, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename, int timeout = 60000)
         {
             filename = null;
 
@@ -216,6 +224,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             request.Accept = "*/*";
             request.ServicePoint.Expect100Continue = false;
             request.CookieContainer = cookieContainer;
+            request.Timeout = timeout;
 
             SetBasicAuthHeader(request, userName, userPassword);
 

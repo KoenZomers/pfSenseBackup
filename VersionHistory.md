@@ -2,6 +2,10 @@
 
 ## Version History
 
+2.3 - released February 4, 2016 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.3.zip) - 10 kb
+
+- Added option -t to instruct pfSense to use a different request timeout for slow connections as requested by ilyahub in [Issue #1](https://github.com/KoenZomers/pfSenseBackup/issues/1)
+
 2.2 - released August 11, 2015 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.2.zip) - 10 kb
 
 - Added option -e to have pfSense encrypt the backup as requested by Michal Naiman
