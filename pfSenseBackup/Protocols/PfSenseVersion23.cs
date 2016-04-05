@@ -6,12 +6,12 @@ using System.Text.RegularExpressions;
 namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
 {
     /// <summary>
-    /// Implementation of the pfSense protocol for version 3.2
+    /// Implementation of the pfSense protocol for version 2.3
     /// </summary>
-    public class PfSenseVersion32 : IPfSenseProtocol
+    public class PfSenseVersion23 : IPfSenseProtocol
     {
         /// <summary>
-        /// Connects with the specified pfSense server using the v3.2 protocol implementation and returns the backup file contents
+        /// Connects with the specified pfSense server using the v2.3 protocol implementation and returns the backup file contents
         /// </summary>
         /// <param name="pfSenseServer">pfSense server details which identifies which pfSense server to connect to</param>
         /// <param name="cookieJar">Cookie container to use through the communication with pfSense</param>

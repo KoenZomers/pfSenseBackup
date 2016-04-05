@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{E3
 		Releases\pfSenseBackupv2.1.zip = Releases\pfSenseBackupv2.1.zip
 		Releases\pfSenseBackupv2.2.zip = Releases\pfSenseBackupv2.2.zip
 		Releases\pfSenseBackupv2.3.zip = Releases\pfSenseBackupv2.3.zip
+		Releases\pfSenseBackupv2.4.1.zip = Releases\pfSenseBackupv2.4.1.zip
 		Releases\pfSenseBackupv2.4.zip = Releases\pfSenseBackupv2.4.zip
 	EndProjectSection
 EndProject
