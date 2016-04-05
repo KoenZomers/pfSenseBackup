@@ -6,12 +6,12 @@ using System.Text.RegularExpressions;
 namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
 {
     /// <summary>
-    /// Implementation of the pfSense protocol for version 2.1 up to 3.1
+    /// Implementation of the pfSense protocol for version 3.2
     /// </summary>
-    public class PfSenseVersion21 : IPfSenseProtocol
+    public class PfSenseVersion32 : IPfSenseProtocol
     {
         /// <summary>
-        /// Connects with the specified pfSense server using the v2.1 implementation and returns the backup file contents
+        /// Connects with the specified pfSense server using the v3.2 protocol implementation and returns the backup file contents
         /// </summary>
         /// <param name="pfSenseServer">pfSense server details which identifies which pfSense server to connect to</param>
         /// <param name="cookieJar">Cookie container to use through the communication with pfSense</param>
@@ -59,26 +59,52 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
                 throw new ApplicationException("ERROR: Credentials incorrect");
             }
 
+            Program.WriteOutput("Requesting backup file");
+
+            // Get the backup page contents for the xsrf token
+            var backupPageUrl = string.Concat(pfSenseServer.ServerBaseUrl, "diag_backup.php");
+
+            var backupPageContents = HttpUtility.HttpGetLoginPageContents(backupPageUrl, cookieJar, timeout);
+
+            // Check if a response was returned from the login page request
+            if (string.IsNullOrEmpty(backupPageContents))
+            {
+                throw new ApplicationException("Unable to retrieve backup page contents");
+            }
+
+            // Use a regular expression to fetch the anti cross site scriping token from the HTML
+            xssToken = Regex.Match(backupPageContents, "<input.+?type=['\"]hidden['\"].+?name=['\"]_+?csrf_magic['\"] value=['\"](?<xsstoken>.*?)['\"].+?/>", RegexOptions.IgnoreCase);
+
+            // Verify that the anti XSS token was found
+            if (!xssToken.Success)
+            {
+                xssToken = Regex.Match(backupPageContents, "var.*?csrfMagicToken.*?=.*?\"(?<xsstoken>.*?);.*?\"");
+            }
+
             Program.WriteOutput("Retrieving backup file");
 
             var downloadArgs = new Dictionary<string, string>
                 {
-                    { "donotbackuprrd", pfSenseServer.BackupStatisticsData ? "" : "on" },
-                    { "nopackages", pfSenseServer.BackupPackageInfo ? "" : "on" },
-                    { "encrypt", pfSenseServer.EncryptBackup ? "on" : "" },
+                    {"__csrf_magic", xssToken.Groups["xsstoken"].Value },
+                    { "backuparea", "" },
+                    { "nopackages", pfSenseServer.BackupPackageInfo ? "" : "yes" },
+                    { "donotbackuprrd", pfSenseServer.BackupStatisticsData ? "" : "yes" },
+                    { "encrypt", pfSenseServer.EncryptBackup ? "yes" : "" },
                     { "encrypt_password", pfSenseServer.EncryptionPassword },
-                    { "encrypt_passconf", pfSenseServer.EncryptionPassword },
-                    { "Submit", "Download configuration" }
+                    { "Submit", "Download configuration as XML" },
+                    { "restorearea", "" },
+                    { "decrypt_password", "" }
                 };
 
             string filename;
             var pfSenseBackupFile = new PfSenseBackupFile
             {
-                FileContents = HttpUtility.DownloadBackupFile(string.Concat(pfSenseServer.ServerBaseUrl, "diag_backup.php"),
+                FileContents = HttpUtility.DownloadBackupFile(  backupPageUrl,
                                                                 downloadArgs,
                                                                 cookieJar,
                                                                 out filename,
-                                                                timeout),
+                                                                timeout,
+                                                                backupPageUrl),
                 FileName = filename
             };
             return pfSenseBackupFile;

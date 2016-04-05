@@ -3,13 +3,14 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## Download
 
-[Download the latest version](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.3.zip)
+[Download the latest version](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.zip)
 
 ## Release Notes
 
-2.3 - released February 4, 2016 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.3.zip) - 10 kb
+2.4 - released April 5, 2016 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.zip) - 10 kb
 
-- Added option -t to instruct pfSense to use a different request timeout for slow connections as requested by ilyahub in [Issue #1](https://github.com/KoenZomers/pfSenseBackup/issues/1)
+- Added support for pfSense version 3.2 RC. Provide the -v 3.2 flag to instruct pfSenseBackup to use the protocol added for pfSense v3.2
+- pfSenseBackup now requires the Microsoft .NET framework v4.6 to be installed (was 4.0 before) as pfSense v3.2 requires TLS 1.2 for SSL. Prior versions of the .NET Framework only support TLS 1.0. This requirement is regardless of which pfSense version you want to target.
 
 [Version History](https://github.com/KoenZomers/pfSenseBackup/blob/master/VersionHistory.md)
 

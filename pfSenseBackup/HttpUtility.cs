@@ -127,8 +127,9 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <param name="cookieContainer">Cookies which have been recorded for this session</param>
         /// <param name="filename">Filename of the download as provided by pfSense (out parameter)</param>
         /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
+        /// <param name="referer">Referer to add to the HTTP header. Leave NULL to not send a referer.</param>
         /// <returns>The website contents returned by the webserver after posting the data</returns>
-        public static string DownloadBackupFile(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename, int timeout = 60000)
+        public static string DownloadBackupFile(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename, int timeout = 60000, string referer = null)
         {
             filename = null;
 
@@ -156,6 +157,12 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
 
             // Convert the POST data to a byte array
             var postDataByteArray = Encoding.UTF8.GetBytes(postData.ToString());
+
+            // Check if a referer should be added to the HTTP request
+            if (referer != null)
+            {
+                request.Referer = referer;
+            }
 
             // Set the ContentType property of the WebRequest
             request.ContentType = string.Concat("multipart/form-data; boundary=", formDataBoundary);

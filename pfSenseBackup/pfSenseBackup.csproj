@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KoenZomers.Tools.pfSense.pfSenseBackup</RootNamespace>
     <AssemblyName>pfSenseBackup</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpUtility.cs" />
+    <Compile Include="Protocols\PfSenseVersion32.cs" />
     <Compile Include="Protocols\PfSenseVersion21.cs" />
     <Compile Include="Protocols\PfSenseBackupFile.cs" />
     <Compile Include="Program.cs" />
