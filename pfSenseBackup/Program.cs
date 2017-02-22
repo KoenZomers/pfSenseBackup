@@ -18,7 +18,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <summary>
         /// Defines the pfSense version to use if not explicitly specified
         /// </summary>
-        private const string DefaultPfSenseVersion = "2.2";
+        private const string DefaultPfSenseVersion = "2.3.3";
 
         #endregion
 
@@ -133,6 +133,10 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
 
                 case "2.3":
                     pfSenseProtocol = new Protocols.PfSenseVersion23();
+                    break;
+
+                case "2.3.3":
+                    pfSenseProtocol = new Protocols.PfSenseVersion233();
                     break;
 
                 default:
@@ -289,7 +293,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("u: Username of the account to use to log on to pfSense");
             WriteOutput("p: Password of the account to use to log on to pfSense");
             WriteOutput("s: IP address or DNS name of the pfSense server");
-            WriteOutput("v: PFSense version. Supported are 1.2, 2.0, 2.1, 2.2 and 2.3 (2.2 = default, optional)");
+            WriteOutput("v: PFSense version. Supported are 1.2, 2.0, 2.1, 2.2, 2.3 and 2.3.3 (2.3.3 = default, optional)");
             WriteOutput("o: Folder or complete path where to store the backup file (optional)");
             WriteOutput("e: Have pfSense encrypt the backup using this password (optional)");
             WriteOutput("t: Timeout in seconds for pfSense to retrieve the backup (60 seconds = default, optional)");

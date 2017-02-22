@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpUtility.cs" />
+    <Compile Include="Protocols\PfSenseVersion233.cs" />
     <Compile Include="Protocols\PfSenseVersion23.cs" />
     <Compile Include="Protocols\PfSenseVersion21.cs" />
     <Compile Include="Protocols\PfSenseBackupFile.cs" />
