@@ -24,7 +24,7 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## System Requirements
 
-This tool requires the Microsoft .NET 4.6 framework to be installed on your Windows client or Windows server operating system. For a full list of operating systems on which this framework can be installed, see: (https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx). Basically it can be installed on Windows Vista SP2 or later or Windows Server 2008 SP2 or later.
+This tool requires the Microsoft .NET 4.6 framework to be installed on your Windows client or Windows server operating system. For a full list of operating systems on which this framework can be installed, see: https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx. Basically it can be installed on Windows Vista SP2 or later or Windows Server 2008 SP2 or later.
 
 ## Usage Instructions
 
