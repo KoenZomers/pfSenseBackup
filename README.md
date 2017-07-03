@@ -3,7 +3,7 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## Download
 
-[Download the latest version](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.2.zip)
+[Download the latest version](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.3.zip)
 
 ## Release Notes
 
