@@ -7,6 +7,10 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## Release Notes
 
+2.4.3 - released July 3, 2017 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.3.zip) - 10 kb
+
+- Added support for connecting to pfSense servers using TLS v1.1 and 1.2. Thanks to Yannick Molinet for pointing this out.
+
 2.4.2 - released February 22, 2017 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.2.zip) - 10 kb
 
 - There was a minor modification to the backup page in pfSense 2.3.3. Added support for 2.3.3 and made it the default version. So if you're on 2.3.3 you don't need to provide the -v flag. If you're still on 2.3 you need to provide the -v 2.3 still.

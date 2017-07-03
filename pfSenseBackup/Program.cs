@@ -109,6 +109,9 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             {
                 // Ignore all certificate related errors
                 ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+
+                // Also allow TLS 1.1 and TLS 1.2 to be used by the pfSense server. TLS 1.0 and SSLv3 are already allowed by default.
+                ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             }
 
             // Create a cookie container to hold the session cookies
