@@ -42,4 +42,4 @@ This tool requires the Microsoft .NET 4.6 framework to be installed on your Wind
 
 ## Feedback
 
-Any kind of feedback is welcome! Feel free to drop me an e-mail at mail@koenzomers.nl
+Any kind of feedback is welcome! Feel free to drop me an e-mail at koen@zomers.eu or [create an issue](https://github.com/KoenZomers/pfSenseBackup/issues)
