@@ -11,10 +11,10 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+pfSenseBackup/[Dd]ebug/
+pfSenseBackup/[Dd]ebugPublic/
+pfSenseBackup/[Rr]elease/
+pfSenseBackup/[Rr]eleases/
 x64/
 x86/
 build/
