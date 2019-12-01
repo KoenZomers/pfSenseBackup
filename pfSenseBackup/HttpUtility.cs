@@ -66,7 +66,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <param name="cookieContainer">Cookies which have been recorded for this session</param>
         /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
         /// <returns>The website contents returned by the webserver after posting the data</returns>
-        public static string AuthenticateViaUrlEncodedFormMethod(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer, int timeout = 60000)
+        public static string AuthenticateViaUrlEncodedFormMethod(string url, Dictionary<string, string> headerFields, Dictionary<string, string> formFields, CookieContainer cookieContainer, int timeout = 60000)
         {
             // Construct the POST request which performs the login
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -75,6 +75,10 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             request.ServicePoint.Expect100Continue = false;
             request.CookieContainer = cookieContainer;
             request.Timeout = timeout;
+
+            // Construct header data
+            foreach (var headerField in headerFields)
+                request.Headers[headerField.Key] = headerField.Value;
 
             // Construct POST data
             var postData = new StringBuilder();
@@ -129,7 +133,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <param name="timeout">Timeout in milliseconds on how long the request may take. Default = 60000 = 60 seconds.</param>
         /// <param name="referer">Referer to add to the HTTP header. Leave NULL to not send a referer.</param>
         /// <returns>The website contents returned by the webserver after posting the data</returns>
-        public static string DownloadBackupFile(string url, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename, int timeout = 60000, string referer = null)
+        public static string DownloadBackupFile(string url, Dictionary<string, string> headerFields, Dictionary<string, string> formFields, CookieContainer cookieContainer, out string filename, int timeout = 60000, string referer = null)
         {
             filename = null;
 
@@ -143,6 +147,10 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             request.ServicePoint.Expect100Continue = false;
             request.CookieContainer = cookieContainer;
             request.Timeout = timeout;
+
+            // Construct header data
+            foreach (var headerField in headerFields)
+                request.Headers[headerField.Key] = headerField.Value;
 
             // Construct POST data
             var postData = new StringBuilder();

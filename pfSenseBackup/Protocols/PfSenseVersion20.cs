@@ -27,6 +27,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
 
             // Authenticate the session
             var authenticationResult = HttpUtility.AuthenticateViaUrlEncodedFormMethod(string.Concat(pfSenseServer.ServerBaseUrl, "index.php"),
+                                                                                       new Dictionary<string, string>(),
                                                                                        new Dictionary<string, string>
                                                                                        {
                                                                                             { "usernamefld", System.Web.HttpUtility.UrlEncode(pfSenseServer.Username) }, 
@@ -55,6 +56,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
             var pfSenseBackupFile = new PfSenseBackupFile
             {
                 FileContents = HttpUtility.DownloadBackupFile(string.Concat(pfSenseServer.ServerBaseUrl, "diag_backup.php"),
+                                                                new Dictionary<string, string>(),
                                                                 downloadArgs,
                                                                 cookieJar,
                                                                 out filename,

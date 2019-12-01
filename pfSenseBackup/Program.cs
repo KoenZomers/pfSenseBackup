@@ -142,6 +142,10 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
                     pfSenseProtocol = new Protocols.PfSenseVersion233();
                     break;
 
+                case "opn1907":
+                    pfSenseProtocol = new Protocols.OPNSenseVersion197();
+                    break;
+
                 default:
                     WriteOutput("Unsupported pfSense version provided ({0})", new object[] { PfSenseServerDetails.Version });
                     Environment.Exit(1);
