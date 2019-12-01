@@ -2,6 +2,11 @@
 
 ## Version History
 
+2.5 - released December 1, 2019 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.5.zip) - 10 kb
+
+- Added support for connecting to OPNSense
+- Migration to .NET Core - builds are multiplaform (Windows, Linux, Mac) and self-contained (no need to install any framework).
+
 2.4.2 - released February 22, 2017 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.2.zip) - 10 kb
 
 - There was a minor modification to the backup page in pfSense 2.3.3. Added support for 2.3.3 and made it the default version. So if you're on 2.3.3 you don't need to provide the -v flag. If you're still on 2.3 you need to provide the -v 2.3 still.

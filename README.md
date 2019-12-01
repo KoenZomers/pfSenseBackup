@@ -7,6 +7,11 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## Release Notes
 
+2.5 - released December 1, 2019 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.5.zip) - 10 kb
+
+- Added support for connecting to OPNSense
+- Migration to .NET Core - builds are multiplaform (Windows, Linux, Mac) and self-contained (no need to install any framework).
+
 2.4.3 - released July 3, 2017 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.3.zip) - 10 kb
 
 - Added support for connecting to pfSense servers using TLS v1.1 and 1.2. Thanks to Yannick Molinet for pointing this out.
