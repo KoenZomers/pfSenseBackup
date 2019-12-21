@@ -7,10 +7,11 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## Release Notes
 
-2.5 - released December 1, 2019 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.5.zip) - 10 kb
+2.5 - released December 21, 2019 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.5.zip) - 30 Mb
 
 - Added support for connecting to OPNSense
-- Migration to .NET Core - builds are multiplaform (Windows, Linux, Mac) and self-contained (no need to install any framework).
+- Migration to .NET Core - builds are multiplaform (Windows, Linux, Mac) and self-contained (no need to install any framework at the cost of a huge increase in file size)
+  Big thanks to [mnaiman](https://github.com/mnaiman) for providing this update through [PR #6](https://github.com/KoenZomers/pfSenseBackup/pull/6)
 
 2.4.3 - released July 3, 2017 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.3.zip) - 10 kb
 
