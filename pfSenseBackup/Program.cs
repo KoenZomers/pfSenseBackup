@@ -142,6 +142,10 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
                     pfSenseProtocol = new Protocols.PfSenseVersion233();
                     break;
 
+                case "opn1907":
+                    pfSenseProtocol = new Protocols.OPNSenseVersion197();
+                    break;
+
                 default:
                     WriteOutput("Unsupported pfSense version provided ({0})", new object[] { PfSenseServerDetails.Version });
                     Environment.Exit(1);
@@ -296,7 +300,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("u: Username of the account to use to log on to pfSense");
             WriteOutput("p: Password of the account to use to log on to pfSense");
             WriteOutput("s: IP address or DNS name of the pfSense server");
-            WriteOutput("v: PFSense version. Supported are 1.2, 2.0, 2.1, 2.2, 2.3 and 2.3.3 (2.3.3 = default, optional)");
+            WriteOutput("v: PFSense version. Supported are 1.2, 2.0, 2.1, 2.2, 2.3 and 2.3.3 (2.3.3 = default, optional). For OPNSense provide opn1907.");
             WriteOutput("o: Folder or complete path where to store the backup file (optional)");
             WriteOutput("e: Have pfSense encrypt the backup using this password (optional)");
             WriteOutput("t: Timeout in seconds for pfSense to retrieve the backup (60 seconds = default, optional)");

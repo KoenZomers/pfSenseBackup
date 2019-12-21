@@ -30,6 +30,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
             var pfSenseBackupFile = new PfSenseBackupFile
             {
                 FileContents = HttpUtility.DownloadBackupFile(string.Concat(pfSenseServer.ServerBaseUrl, "diag_backup.php"),
+                                                                new Dictionary<string, string>(),  
                                                                 downloadArgs,
                                                                 cookieJar,
                                                                 out filename,
