@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pfSenseBackup", "pfSenseBackup\pfSenseBackup.csproj", "{25EE292E-2305-43D3-B085-996C2E9AA9C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pfSenseBackup", "pfSenseBackup\pfSenseBackup.csproj", "{25EE292E-2305-43D3-B085-996C2E9AA9C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{E36EC09D-98CC-49D4-8B81-B05205F95306}"
 	ProjectSection(SolutionItems) = preProject
@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{E3
 		Releases\pfSenseBackupv2.4.2.zip = Releases\pfSenseBackupv2.4.2.zip
 		Releases\pfSenseBackupv2.4.3.zip = Releases\pfSenseBackupv2.4.3.zip
 		Releases\pfSenseBackupv2.4.zip = Releases\pfSenseBackupv2.4.zip
+		Releases\pfSenseBackupv2.5.zip = Releases\pfSenseBackupv2.5.zip
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{12C92BB7-7D1A-49F5-AD96-2101FEE61C8E}"

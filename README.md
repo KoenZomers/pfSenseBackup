@@ -1,5 +1,5 @@
 # pfSenseBackup
-pfSense Backup allows you to backup the complete configuration of your pfSense server using this command line Windows application. It is easy to include this in a larger script for your backups and schedule it i.e. with the Windows Task Scheduler. It supports pfSense installations running at least pfSense version 1.2 up to the most recent pfSense version 2.4.4.
+pfSense Backup allows you to backup the complete configuration of your pfSense or OPNSense server using this command line Windows application. It is easy to include this in a larger script for your backups and schedule it i.e. with the Windows Task Scheduler or in an Azure Function v2. It supports pfSense installations running at least pfSense version 1.2 up to the most recent pfSense version 2.4.4 and OPNSense 19.7.
 
 ## Download
 
@@ -34,13 +34,13 @@ pfSense Backup allows you to backup the complete configuration of your pfSense s
 
 ## System Requirements
 
-This tool requires the Microsoft .NET 4.6 framework to be installed on your Windows client or Windows server operating system. For a full list of operating systems on which this framework can be installed, see: https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx. Basically it can be installed on Windows Vista SP2 or later or Windows Server 2008 SP2 or later.
+This tool is self contained and does not have any dependencies on any frameworks. The version available under releases has been compiled for 64 bit Windows. If you wish to run it under Linux, you will need to compile a Linux version yourself from the source code in this project.
 
 ## Usage Instructions
 
 1. Copy pfSenseBackup.exe to any location on a Windows machine where you want to use the tool
 2. Run pfSenseBackup.exe to see the command line options
-3. Run pfSenseBackup.exe with the appropriate command line options to connect to your pfSense server and download the backup
+3. Run pfSenseBackup.exe with the appropriate command line options to connect to your pfSense or OPNSense server and download the backup
 
 ![](./Documentation/Images/Help.png)
 
