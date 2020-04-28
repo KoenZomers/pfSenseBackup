@@ -198,6 +198,8 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             // Store the backup contents in the file
             WriteBackupToFile(outputDirectory, pfSenseBackupFile.FileContents);
 
+
+            // Delete old backups if the user specified -k
             if (PfSenseServerDetails.BackupsToKeep > -1)
             {
                 string[] files = Directory.GetFiles(outputDirectory);
