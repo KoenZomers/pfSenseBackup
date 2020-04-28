@@ -1,5 +1,5 @@
 # pfSenseBackup
-pfSense Backup allows you to backup the complete configuration of your pfSense or OPNSense server using this command line application. It is easy to include this in a larger script for your backups and schedule it i.e. with the Windows Task Scheduler or in an Azure Function v2. It supports pfSense installations running at least pfSense version 1.2 up to the most recent pfSense version 2.4.4 and OPNSense 19.7. It can be ran on a Windows machine, Mac, Linux and ARM devices such as the Raspberry Pi.
+pfSense Backup allows you to backup the complete configuration of your pfSense or OPNSense server using this command line application. It is easy to include this in a larger script for your backups and schedule it i.e. with the Windows Task Scheduler or in an Azure Function v2. It supports pfSense installations running at least pfSense version 1.2 up to the most recent pfSense version and OPNSense 19.7. It can be ran on a Windows machine, Mac, Linux and ARM devices such as the Raspberry Pi.
 
 ## Download
 
