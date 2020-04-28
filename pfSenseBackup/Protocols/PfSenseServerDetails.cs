@@ -64,5 +64,10 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
         /// The password to use to encrypt the backup. Only applied if EncryptBackup is set to True.
         /// </summary>
         public string EncryptionPassword { get; set; }
+        
+        /// <summary>
+        /// Defines how many backups to keep, i.e. 30 days worth.  Useful if running daily so you don't fill up your desk.
+        /// </summary>
+        public double BackupsToKeep { get; set; }
     }
 }

@@ -197,7 +197,22 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
 
             // Store the backup contents in the file
             WriteBackupToFile(outputDirectory, pfSenseBackupFile.FileContents);
-            
+
+            if (PfSenseServerDetails.BackupsToKeep > -1)
+            {
+                string[] files = Directory.GetFiles(outputDirectory);
+
+                foreach (string file in files)
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+                    if (fileInfo.LastAccessTime < DateTime.Now.AddDays(PfSenseServerDetails.BackupsToKeep * -1))
+                    {
+                        fileInfo.Delete();
+                    }
+                }
+
+            }
+
             WriteOutput();
             WriteOutput("DONE");
         }
@@ -280,6 +295,16 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
                     // Input is in seconds, value is in milliseconds, so multiply with 1000
                     PfSenseServerDetails.RequestTimeOut = timeout * 1000;
                 }                
+            }
+
+            if (args.Contains("-k"))
+            {
+                double keep = -1;
+                PfSenseServerDetails.BackupsToKeep = keep;
+                if (double.TryParse(args[args.IndexOf("-k") + 1], out keep))
+                {
+                    PfSenseServerDetails.BackupsToKeep = keep;
+                }
             }
 
             PfSenseServerDetails.Version = args.Contains("-v") ? args[args.IndexOf("-v") + 1] : DefaultPfSenseVersion;
