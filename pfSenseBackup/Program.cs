@@ -331,6 +331,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("o: Folder or complete path where to store the backup file (optional)");
             WriteOutput("e: Have pfSense encrypt the backup using this password (optional)");
             WriteOutput("t: Timeout in seconds for pfSense to retrieve the backup (60 seconds = default, optional)");
+            WriteOutput("k: Number of days to keep backups, useful if you run nightly and don't want to eat up all disk space");
             WriteOutput("usessl: if provided https will be used to connect to pfSense instead of http");
             WriteOutput("norrd: if provided no RRD statistics data will be included");
             WriteOutput("nopackage: if provided no package info data will be included");
