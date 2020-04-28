@@ -198,11 +198,21 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             // Store the backup contents in the file
             WriteBackupToFile(outputDirectory, pfSenseBackupFile.FileContents);
 
+            DeleteOldBackups(OutputFileName);
 
-            // Delete old backups if the user specified -k
+            WriteOutput();
+            WriteOutput("DONE");
+        }
+
+        /// <summary>
+        /// Delete old backups if the user specified -k 
+        /// </summary>
+        /// <param name="outPutPath">Path to look for old backups</param>
+        private static void DeleteOldBackups(string outPutPath)
+        {
             if (PfSenseServerDetails.BackupsToKeep > -1)
             {
-                string[] files = Directory.GetFiles(outputDirectory);
+                string[] files = Directory.GetFiles(outPutPath);
 
                 foreach (string file in files)
                 {
@@ -214,11 +224,8 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
                 }
 
             }
-
-            WriteOutput();
-            WriteOutput("DONE");
         }
-        
+
         /// <summary>
         /// Writes the backup content to a file
         /// </summary>
@@ -299,10 +306,11 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
                 }                
             }
 
+            double keep = -1;
+            PfSenseServerDetails.BackupsToKeep = keep;
+
             if (args.Contains("-k"))
             {
-                double keep = -1;
-                PfSenseServerDetails.BackupsToKeep = keep;
                 if (double.TryParse(args[args.IndexOf("-k") + 1], out keep))
                 {
                     PfSenseServerDetails.BackupsToKeep = keep;
