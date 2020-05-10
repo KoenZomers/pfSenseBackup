@@ -66,8 +66,8 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup.Protocols
         public string EncryptionPassword { get; set; }
         
         /// <summary>
-        /// Defines how many backups to keep, i.e. 30 days worth.  Useful if running daily so you don't fill up your desk.
+        /// Defines how many days of backups to keep. If left at NULL, no old backups will be removed.
         /// </summary>
-        public double BackupsToKeep { get; set; }
+        public short? BackupDaysToKeep { get; set; }
     }
 }
