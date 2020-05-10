@@ -2,10 +2,14 @@
 
 ## Version History
 
-2.5 - released December 1, 2019 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.5.zip) - 10 kb
+2.5.1 - released May 11, 2020 [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.5.1)
+
+- Added optional option -k to allow for backups older than a provided number of days to automatically be deleted on each run of this tool. Submitted through [PR #10](https://github.com/KoenZomers/pfSenseBackup/pull/10), thanks to [Shaun McCloud](https://github.com/smccloud) for submitting!
+
+2.5 - released December 1, 2019 - [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.5.0)
 
 - Added support for connecting to OPNSense
-- Migration to .NET Core - builds are multiplaform (Windows, Linux, Mac) and self-contained (no need to install any framework).
+- Migration to .NET Core - builds are multiplaform (Windows, Linux, Mac) and self-contained (no need to install any framework)
 
 2.4.2 - released February 22, 2017 - [download](https://github.com/KoenZomers/pfSenseBackup/raw/master/Releases/pfSenseBackupv2.4.2.zip) - 10 kb
 

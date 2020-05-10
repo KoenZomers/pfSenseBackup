@@ -172,11 +172,11 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             }
 
             // Define the full path to the file to store the backup in. By default this will be in the same directory as this application runs from using the filename provided by pfSense, unless otherwise specified using the -o parameter.
-            string outputDirectory;
+            string outputPath;
             if (string.IsNullOrEmpty(OutputFileName))
             {
                 // -o flag has not been provided, store the file in the same directory as this tool runs using the same filename as provided by pfSense
-                outputDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), pfSenseBackupFile.FileName);
+                outputPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), pfSenseBackupFile.FileName);
             }
             else
             {
@@ -184,24 +184,54 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
                 if (Directory.Exists(OutputFileName))
                 {
                     // Path was provided, use the filename as provided by pfSense to store it in the by -o provided path
-                    outputDirectory = Path.Combine(OutputFileName, pfSenseBackupFile.FileName);
+                    outputPath = Path.Combine(OutputFileName, pfSenseBackupFile.FileName);
                 }
                 else
                 {
                     // Complete path including filename has been provided with the -o flag, use that to store the backup
-                    outputDirectory = OutputFileName;
+                    outputPath = OutputFileName;
                 }
             }
 
-            WriteOutput(string.Concat("Saving backup file to ", outputDirectory));
+            WriteOutput($"Saving backup file to {outputPath}");
 
             // Store the backup contents in the file
-            WriteBackupToFile(outputDirectory, pfSenseBackupFile.FileContents);
-            
+            WriteBackupToFile(outputPath, pfSenseBackupFile.FileContents);
+
+            // Check if we should look to remove old backups
+            if (PfSenseServerDetails.BackupDaysToKeep.HasValue)
+            {
+                DeleteOldBackups(Directory.GetParent(outputPath).FullName, PfSenseServerDetails.BackupDaysToKeep.Value);
+            }
+
             WriteOutput();
             WriteOutput("DONE");
         }
-        
+
+        /// <summary>
+        /// Delete old backups if the user specified -k 
+        /// </summary>
+        /// <param name="outputPath">Path to look for old backups</param>
+        /// <param name="daysToKeep">Amount of days to keep the backups for before deleting them</param>
+        private static void DeleteOldBackups(string outputPath, short daysToKeep)
+        {
+            WriteOutput($"Looking to delete backups older than {daysToKeep} day{(daysToKeep != 1 ? "s" : "")} from {outputPath}");
+
+            string[] files = Directory.GetFiles(outputPath, "*.xml");
+
+            DateTime deleteBeforeDate = DateTime.Now.AddDays(daysToKeep * -1);
+
+            foreach (string file in files)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                if (fileInfo.LastAccessTime < deleteBeforeDate)
+                {
+                    WriteOutput($"Deleting {fileInfo.Name}");
+                    fileInfo.Delete();
+                }
+            }
+        }
+
         /// <summary>
         /// Writes the backup content to a file
         /// </summary>
@@ -274,12 +304,19 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
 
             if (args.Contains("-t"))
             {
-                int timeout;
-                if(int.TryParse(args[args.IndexOf("-t") + 1], out timeout))
+                if(int.TryParse(args[args.IndexOf("-t") + 1], out int timeout))
                 {
                     // Input is in seconds, value is in milliseconds, so multiply with 1000
                     PfSenseServerDetails.RequestTimeOut = timeout * 1000;
                 }                
+            }
+
+            if (args.Contains("-k"))
+            {
+                if (short.TryParse(args[args.IndexOf("-k") + 1], out short keepBackupsForDays))
+                {
+                    PfSenseServerDetails.BackupDaysToKeep = keepBackupsForDays;
+                }
             }
 
             PfSenseServerDetails.Version = args.Contains("-v") ? args[args.IndexOf("-v") + 1] : DefaultPfSenseVersion;
@@ -304,6 +341,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("o: Folder or complete path where to store the backup file (optional)");
             WriteOutput("e: Have pfSense encrypt the backup using this password (optional)");
             WriteOutput("t: Timeout in seconds for pfSense to retrieve the backup (60 seconds = default, optional)");
+            WriteOutput("k: Number of days to keep backups for. Backups older than this will be deleted.");
             WriteOutput("usessl: if provided https will be used to connect to pfSense instead of http");
             WriteOutput("norrd: if provided no RRD statistics data will be included");
             WriteOutput("nopackage: if provided no package info data will be included");
