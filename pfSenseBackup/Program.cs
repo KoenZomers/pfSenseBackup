@@ -176,7 +176,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             if (string.IsNullOrEmpty(OutputFileName))
             {
                 // -o flag has not been provided, store the file in the same directory as this tool runs using the same filename as provided by pfSense
-                outputPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), pfSenseBackupFile.FileName);
+                outputPath = Path.Combine(new FileInfo(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName).DirectoryName, pfSenseBackupFile.FileName);
             }
             else
             {
