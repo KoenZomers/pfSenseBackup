@@ -1,6 +1,5 @@
 # pfSenseBackup
-
-![](https://github.com/KoenZomers/pfSenseBackup/workflows/.NET%20Core/badge.svg) ![](https://img.shields.io/github/downloads/koenzomers/pfSenseBackup/total.svg) ![](https://img.shields.io/github/issues/koenzomers/pfSenseBackup.svg) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+![.NET Core](https://github.com/KoenZomers/pfSenseBackup/workflows/.NET%20Core/badge.svg) ![](https://img.shields.io/github/downloads/koenzomers/pfSenseBackup/total.svg) ![](https://img.shields.io/github/issues/koenzomers/pfSenseBackup.svg) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 pfSense Backup allows you to backup the complete configuration of your pfSense or OPNSense server using this command line application. It is easy to include this in a larger script for your backups and schedule it i.e. with the Windows Task Scheduler or in an Azure Function v2. It supports pfSense installations running at least pfSense version 1.2 up to the most recent pfSense version and OPNSense 19.7. It can be ran on a Windows machine, Mac, Linux and ARM devices such as the Raspberry Pi.
 
