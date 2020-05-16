@@ -1,5 +1,5 @@
 ---
-name: Custom issue template
+name: Question template
 about: If you have a question regarding this project
 title: "[QUESTION] Brief description"
 labels: Reviewing
