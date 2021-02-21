@@ -3,26 +3,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <PublishTrimmed>true</PublishTrimmed>
     <PublishReadyToRun>true</PublishReadyToRun>
     <PublishSingleFile>true</PublishSingleFile>
     <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
     <ApplicationIcon>pfSense.ico</ApplicationIcon>
-    <AssemblyVersion>2.5.2.0</AssemblyVersion>
-    <FileVersion>2.5.0.0</FileVersion>
+    <AssemblyVersion>2.6.0.0</AssemblyVersion>
+    <FileVersion>2.6.0.0</FileVersion>
     <Authors>Koen Zomers</Authors>
     <Product>pfSense Backup</Product>
-    <Version>2.5.2.0</Version>
+    <Version>2.6.0.0</Version>
     <Copyright>Koen Zomers</Copyright>
-    <PackageReleaseNotes>- Fixed bug when not providing the -o parameter that the backup would be downloaded to a temporary location instead of the location where you would start the application from [Issue #11](https://github.com/KoenZomers/pfSenseBackup/issues/11), thanks to [jvivona](https://github.com/jvivona) for reporting it!</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added support for pfSense v2.5.0
+- Upgraded to .NET Core 3.1</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <PropertyGroup>
+    <PublishReadyToRun>false</PublishReadyToRun>
+  </PropertyGroup>
 </Project>

@@ -9,18 +9,10 @@ pfSense Backup allows you to backup the complete configuration of your pfSense o
 
 ## Release Notes
 
-2.5.2 - released May 11, 2020 [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.5.2)
+2.6.0 - released February 21, 2021 [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.6.0)
 
-- Fixed bug when not providing the -o parameter that the backup would be downloaded to a temporary location instead of the location where you would start the application from [Issue #11](https://github.com/KoenZomers/pfSenseBackup/issues/11), thanks to [jvivona](https://github.com/jvivona) for reporting it!
-
-2.5.1 - released May 11, 2020 [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.5.1)
-
-- Added optional option -k to allow for backups older than a provided number of days to automatically be deleted on each run of this tool. Submitted through [PR #10](https://github.com/KoenZomers/pfSenseBackup/pull/10), thanks to [Shaun McCloud](https://github.com/smccloud) for submitting!
-
-2.5 - released December 1, 2019 - [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.5.0)
-
-- Added support for connecting to OPNSense
-- Migration to .NET Core - builds are multiplaform (Windows, Linux, Mac) and self-contained (no need to install any framework)
+- Added support for pfSense v2.5.0
+- Upgraded to .NET Core 3.1
 
 [Version History](https://github.com/KoenZomers/pfSenseBackup/blob/master/VersionHistory.md)
 
