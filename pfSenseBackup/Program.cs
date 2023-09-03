@@ -18,7 +18,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
         /// <summary>
         /// Defines the pfSense version to use if not explicitly specified
         /// </summary>
-        private const string DefaultPfSenseVersion = "2.5.0";
+        private const string DefaultPfSenseVersion = "2.7.0";
 
         #endregion
 
@@ -144,6 +144,10 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
 
                 case "2.5.0":
                     pfSenseProtocol = new Protocols.PfSenseVersion250();
+                    break;
+
+                case "2.7.0":
+                    pfSenseProtocol = new Protocols.PfSenseVersion270();
                     break;
 
                 case "opn1907":
@@ -327,7 +331,8 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
 
             PfSenseServerDetails.BackupStatisticsData = !args.Contains("-norrd");
             PfSenseServerDetails.BackupPackageInfo = !args.Contains("-nopackage");
-            PfSenseServerDetails.UseHttps = args.Contains("-usessl");
+            PfSenseServerDetails.BackupExtraData = !args.Contains("-noextradata");
+            PfSenseServerDetails.UseHttps = args.Contains("-usessl");            
         }
 
         /// <summary>
@@ -341,7 +346,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("u: Username of the account to use to log on to pfSense");
             WriteOutput("p: Password of the account to use to log on to pfSense");
             WriteOutput("s: IP address or DNS name of the pfSense server");
-            WriteOutput("v: PFSense version. Supported are 1.2, 2.0, 2.1, 2.2, 2.3, 2.3.3 and 2.5.0 (2.5.0 = default, optional). For OPNSense provide opn1907.");
+            WriteOutput("v: PFSense version. Supported are 1.2, 2.0, 2.1, 2.2, 2.3, 2.3.3, 2.5.0 and 2.7.0 (2.7.0 = default, optional). For OPNSense provide opn1907.");
             WriteOutput("o: Folder or complete path where to store the backup file (optional)");
             WriteOutput("e: Have pfSense encrypt the backup using this password (optional)");
             WriteOutput("t: Timeout in seconds for pfSense to retrieve the backup (60 seconds = default, optional)");
@@ -349,6 +354,7 @@ namespace KoenZomers.Tools.pfSense.pfSenseBackup
             WriteOutput("usessl: if provided https will be used to connect to pfSense instead of http");
             WriteOutput("norrd: if provided no RRD statistics data will be included");
             WriteOutput("nopackage: if provided no package info data will be included");
+            WriteOutput("noextradata: if provided no extra data will be included");
             WriteOutput("silent: if provided no output will be shown");
             WriteOutput();
             WriteOutput("Example:");

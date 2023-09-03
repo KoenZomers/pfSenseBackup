@@ -1,12 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pfSenseBackup", "pfSenseBackup\pfSenseBackup.csproj", "{25EE292E-2305-43D3-B085-996C2E9AA9C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{E36EC09D-98CC-49D4-8B81-B05205F95306}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\Users\koenz\Downloads\favicon-32x32.ico = ..\..\..\Users\koenz\Downloads\favicon-32x32.ico
 		Releases\pfSenseBackupv1.0.zip = Releases\pfSenseBackupv1.0.zip
 		Releases\pfSenseBackupv1.1.zip = Releases\pfSenseBackupv1.1.zip
 		Releases\pfSenseBackupv1.2.zip = Releases\pfSenseBackupv1.2.zip

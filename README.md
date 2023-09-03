@@ -9,6 +9,13 @@ pfSense Backup allows you to backup the complete configuration of your pfSense o
 
 ## Release Notes
 
+2.7.0 - released September 3, 2023 [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.7.0)
+
+- Compiled against .NET 6
+- Added option for including "Backup extra data" in the backup file
+- Added Windows 32 bit version
+- Added OSX ARM64 version
+
 2.6.0 - released February 21, 2021 [download](https://github.com/KoenZomers/pfSenseBackup/releases/tag/2.6.0)
 
 - Added support for pfSense v2.5.0
